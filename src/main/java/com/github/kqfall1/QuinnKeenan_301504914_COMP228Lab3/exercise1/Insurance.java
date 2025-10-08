@@ -2,6 +2,8 @@
 
 package com.github.kqfall1.QuinnKeenan_301504914_COMP228Lab3.exercise1;
 
+import com.github.kqfall1.kqfall1JavaUtils.ObjectUtils;
+
 abstract class Insurance
 {
 	private final int id;
@@ -9,35 +11,34 @@ abstract class Insurance
 	private static int nextIdValue;
 	private final InsuranceType type;
 
-	protected Insurance(double monthlyPayment, InsuranceType type)
+	Insurance(double monthlyPayment, InsuranceType type)
 	{
 		id = ++nextIdValue;
-		this.monthlyPayment = monthlyPayment;
+		setMonthlyPayment(monthlyPayment);
 		this.type = type;
 	}
 
-	public int getId()
+	public final int getId()
 	{
 		return id;
 	}
 
-	public double getMonthlyPayment()
+	public final double getMonthlyPayment()
 	{
 		return monthlyPayment;
 	}
 
-	public InsuranceType getType()
+	public final InsuranceType getType()
 	{
 		return type;
 	}
 
-	protected void setMonthlyPayment(double monthlyPayment)
+	protected final void setMonthlyPayment(double monthlyPayment)
 	{
-		if (monthlyPayment <= 0)
-		{
-			throw new IllegalArgumentException(String.format("Insurance #%d: monthly payment must be positive.", getId()));
-		}
+		final int LOWER_BOUND = 1;
+		final double UPPER_BOUND = Float.MAX_VALUE;
 
+		ObjectUtils.validateNumber(monthlyPayment, "Monthly payment", LOWER_BOUND, UPPER_BOUND);
 		this.monthlyPayment = monthlyPayment;
 	}
 

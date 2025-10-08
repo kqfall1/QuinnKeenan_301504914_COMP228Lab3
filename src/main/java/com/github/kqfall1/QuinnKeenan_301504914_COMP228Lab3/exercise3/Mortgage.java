@@ -25,7 +25,7 @@ abstract class Mortgage implements Comparable<Mortgage>
 	{
 		creationDate = LocalDate.now();
 		id = ++nextId;
-		ObjectUtils.validateArgument(interestRate, "Interest rate", 0.1, 100);
+		ObjectUtils.validateNumber(interestRate, "Interest rate", 0.1, 100);
 		this.interestRate = interestRate / 100;
 		setMonthlyPayment(monthlyPayment);
 		setPrincipal(principal);
@@ -85,7 +85,6 @@ abstract class Mortgage implements Comparable<Mortgage>
 		int monthIndex;
 		BigDecimal monthlyRate;
 		BigDecimal monthsActive = BigDecimal.valueOf(Period.between(creationDate, LocalDate.now()).toTotalMonths());
-		BigDecimal monthsActiveRemainder;
 		BigDecimal totalOwed = principal;
 
 		monthlyRate = BigDecimal.valueOf(interestRate / 12);
@@ -106,18 +105,18 @@ abstract class Mortgage implements Comparable<Mortgage>
 	final void setMonthlyPayment(double monthlyPayment)
 	{
 		final int LOWER_BOUND = 1;
-		final double UPPER_BOUND = Double.MAX_VALUE;
+		final double UPPER_BOUND = Float.MAX_VALUE;
 
-		ObjectUtils.validateArgument(monthlyPayment, "Monthly payment", LOWER_BOUND, UPPER_BOUND);
+		ObjectUtils.validateNumber(monthlyPayment, "Monthly payment", LOWER_BOUND, UPPER_BOUND);
 		this.monthlyPayment = new BigDecimal(monthlyPayment);
 	}
 
 	private void setPrincipal(double principal)
 	{
 		int LOWER_BOUND = 1;
-		double UPPER_BOUND = Double.MAX_VALUE;
+		double UPPER_BOUND = Float.MAX_VALUE;
 
-		ObjectUtils.validateArgument(principal, "Principal", LOWER_BOUND, UPPER_BOUND);
+		ObjectUtils.validateNumber(principal, "Principal", LOWER_BOUND, UPPER_BOUND);
 		this.principal = new BigDecimal(principal);
 	}
 
@@ -125,16 +124,16 @@ abstract class Mortgage implements Comparable<Mortgage>
 	{
 		int LOWER_BOUND = 1;
 
-		ObjectUtils.validateArgument(termYears, "Term years", LOWER_BOUND, MAX_TERM_YEARS);
+		ObjectUtils.validateNumber(termYears, "Term years", LOWER_BOUND, MAX_TERM_YEARS);
 		this.termYears = new BigDecimal(termYears);
 	}
 
 	final void setTotalPaid(double totalPaid)
 	{
 		int LOWER_BOUND = 0;
-		double UPPER_BOUND = Double.MAX_VALUE;
+		double UPPER_BOUND = Float.MAX_VALUE;
 
-		ObjectUtils.validateArgument(totalPaid, "Total paid", LOWER_BOUND, UPPER_BOUND);
+		ObjectUtils.validateNumber(totalPaid, "Total paid", LOWER_BOUND, UPPER_BOUND);
 		this.totalPaid = new BigDecimal(totalPaid);
 	}
 

@@ -45,18 +45,18 @@ public class HourlyEmployee extends Employee
 	final void setAvgWeeklyHours(double avgWeeklyHours)
 	{
 		final int LOWER_BOUND = 1;
-		final int UPPER_BOUND = 100;
+		final int UPPER_BOUND = 125;
 
-		ObjectUtils.validateArgument(avgWeeklyHours, "Average weekly hours", LOWER_BOUND, UPPER_BOUND);
+		ObjectUtils.validateNumber(avgWeeklyHours, "Average weekly hours", LOWER_BOUND, UPPER_BOUND);
 		this.avgWeeklyHours = avgWeeklyHours;
 	}
 
 	final void setHourlyRate(double hourlyRate)
 	{
 		final int LOWER_BOUND = 1;
-		final int UPPER_BOUND = 100;
+		final int UPPER_BOUND = 10000;
 
-		ObjectUtils.validateArgument(hourlyRate, "Hourly rate", LOWER_BOUND, UPPER_BOUND);
+		ObjectUtils.validateNumber(hourlyRate, "Hourly rate", LOWER_BOUND, UPPER_BOUND);
 		this.hourlyRate = hourlyRate;
 	}
 

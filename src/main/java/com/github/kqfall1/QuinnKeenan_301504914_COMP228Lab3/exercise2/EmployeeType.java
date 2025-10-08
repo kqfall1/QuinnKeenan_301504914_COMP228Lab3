@@ -4,10 +4,10 @@ package com.github.kqfall1.QuinnKeenan_301504914_COMP228Lab3.exercise2;
 
 enum EmployeeType
 {
-	APPRENTICE,
+	//APPRENTICE,
 	FULL_TIME,
-	INTERN,
-	PART_TIME,
-	SEASONAL,
-	TEMPORARY
+	//INTERN,
+	PART_TIME
+	//SEASONAL,
+	//TEMPORARY
 }

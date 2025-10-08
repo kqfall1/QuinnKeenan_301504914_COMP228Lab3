@@ -32,7 +32,7 @@
         <dependency>
             <groupId>com.github.kqfall1</groupId>
             <artifactId>kqfall1JavaUtils</artifactId>
-            <version>1.33</version>
+            <version>1.36</version>
         </dependency>
     </dependencies>
 </project>

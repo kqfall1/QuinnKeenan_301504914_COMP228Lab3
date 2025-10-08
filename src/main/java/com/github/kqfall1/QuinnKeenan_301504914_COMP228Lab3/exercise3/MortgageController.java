@@ -7,15 +7,14 @@ import com.github.kqfall1.kqfall1JavaUtils.CollectionPrinter;
 import com.github.kqfall1.kqfall1JavaUtils.JOptionPaneHandler;
 import com.github.kqfall1.kqfall1JavaUtils.StringUtils;
 import javax.swing.JOptionPane;
-import java.util.Arrays;
 
 class MortgageController
 {
 	public static void main(String[] args)
 	{
-		final int MORTGAGE_INSTANTIATION_COUNT = 3;
+		final int MORTGAGE_ARR_COUNT = 3;
 		int mortgageIndex;
-		Mortgage[] mortgages = new Mortgage[MORTGAGE_INSTANTIATION_COUNT];
+		final Mortgage[] mortgages = new Mortgage[MORTGAGE_ARR_COUNT];
 
 		for (mortgageIndex = 0; mortgageIndex < mortgages.length; mortgageIndex++)
 		{
@@ -29,18 +28,17 @@ class MortgageController
 			);
 		}
 
-		Arrays.sort(mortgages);
 		CollectionPrinter.print(mortgages, "Mortgage array");
 	}
 
 	private static Mortgage promptForMortgageInfo()
 	{
-		String input = null;
-		double insuranceRate = 0;
-		double monthlyPayment = 0;
+		String input;
+		double insuranceRate;
+		double monthlyPayment;
 		Mortgage mortgage;
-		double principal = 0;
-		double termYears = 0;
+		double principal;
+		double termYears;
 
 		insuranceRate = JOptionPaneHandler.promptForValidDouble(
 			"What interest rate would you like for your new mortgage?",
@@ -49,12 +47,12 @@ class MortgageController
 
 		monthlyPayment = JOptionPaneHandler.promptForValidDouble(
 			"What is the monthly payment?",
-			1, Double.MAX_VALUE
+			1, Float.MAX_VALUE
 		);
 
 		principal = JOptionPaneHandler.promptForValidDouble(
 			"What is the principal?",
-			1, Double.MAX_VALUE
+			1, Float.MAX_VALUE
 		);
 
 		termYears = JOptionPaneHandler.promptForValidDouble(
@@ -63,11 +61,11 @@ class MortgageController
 		);
 
 		input = JOptionPaneHandler.promptForValidString(
-			"What is the type of this mortgage?",
+			"Would you like a business mortgage or a personal mortgage?",
 			CollectionConverter.toStringArr(MortgageType.values())
 		);
 
-		if (StringUtils.normalizeUpper(input).equals(MortgageType.BUSINESS.toString()))
+		if (MortgageType.valueOf(StringUtils.normalizeUpper(input)) == MortgageType.BUSINESS)
 		{
 			mortgage = new BusinessMortgage(insuranceRate, monthlyPayment, principal, termYears);
 		}

@@ -4,7 +4,7 @@ package com.github.kqfall1.QuinnKeenan_301504914_COMP228Lab3.exercise1;
 
 class LifeInsurance extends Insurance
 {
-	protected LifeInsurance(double monthlyPayment)
+	LifeInsurance(double monthlyPayment)
 	{
 		super(monthlyPayment, InsuranceType.LIFE);
 	}

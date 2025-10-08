@@ -35,9 +35,9 @@ public class SalaryEmployee extends Employee
 	final void setSalary(double salary)
 	{
 		final int LOWER_BOUND = 1;
-		final int UPPER_BOUND = 500000;
+		final double UPPER_BOUND = Float.MAX_VALUE;
 
-		ObjectUtils.validateArgument(salary, "Salary", LOWER_BOUND, UPPER_BOUND);
+		ObjectUtils.validateNumber(salary, "Salary", LOWER_BOUND, UPPER_BOUND);
 		this.salary = salary;
 	}
 

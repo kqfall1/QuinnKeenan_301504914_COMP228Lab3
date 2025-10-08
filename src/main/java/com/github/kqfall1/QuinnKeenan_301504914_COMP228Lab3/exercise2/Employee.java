@@ -2,6 +2,8 @@
 
 package com.github.kqfall1.QuinnKeenan_301504914_COMP228Lab3.exercise2;
 
+import com.github.kqfall1.kqfall1JavaUtils.ObjectUtils;
+
 abstract class Employee
 {
 	private String address;
@@ -17,6 +19,7 @@ abstract class Employee
 	{
 		setAddress(address);
 		id = ++nextId;
+		ObjectUtils.validateInputWasEntered(name);
 		this.name = name;
 		setPayClassification(payClassification);
 		setPhone(phone);
@@ -57,6 +60,7 @@ abstract class Employee
 
 	final void setAddress(String address)
 	{
+		ObjectUtils.validateInputWasEntered(address);
 		this.address = address;
 	}
 
@@ -67,6 +71,7 @@ abstract class Employee
 
 	final void setPhone(String phone)
 	{
+		ObjectUtils.validateInputWasEntered(phone);
 		this.phone = phone;
 	}
 

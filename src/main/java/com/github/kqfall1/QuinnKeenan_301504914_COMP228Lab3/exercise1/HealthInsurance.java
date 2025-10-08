@@ -4,7 +4,7 @@ package com.github.kqfall1.QuinnKeenan_301504914_COMP228Lab3.exercise1;
 
 class HealthInsurance extends Insurance
 {
-	protected HealthInsurance(double monthlyPayment)
+	HealthInsurance(double monthlyPayment)
 	{
 		super(monthlyPayment, InsuranceType.HEALTH);
 	}
